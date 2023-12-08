@@ -141,14 +141,14 @@ section {
     padding: 5px;
     cursor: pointer;
 }
-        .aa{
-            margine-left: 40%;
-            color:white;
-            padding:5px;
+         .enter {
+            height: 50px; /* Increase the height */
+            border-radius: 15px; /* Add border radius */
         }
 
-        .enter{
-            hight:20px;
+        /* Updated CSS for the Get Weather button */
+        .get_weather {
+            cursor: default; /* Change the cursor */
         }
     </style>
 </head>
@@ -157,29 +157,24 @@ section {
 <body data-bs-theme="light">
     
     <div class="container">
-        <nav  class="header">
+        <nav class="header">
             <img src="./Winter_is_Coming2.png" alt="winter_logo" srcset="">
-            <a href="#about" class="aa"><b>About</b> </a>
-            <a href="#login.html"  class="aa "><b>Login</b> </a> 
-            <button class="btn rounded-fill" onclick="myFunction()" ><i class="bi bi-moon-fill"></i></button>
+            <div style="display: flex; flex-direction: row;">
+                <a href="#about" class="aa"><b>About</b></a>
+                <a href="#login.html" class="aa"><b>Login</b></a>
+            </div>
+            <button class="btn rounded-fill" onclick="myFunction()"><i class="bi bi-moon-fill"></i></button>
         </nav>
-        
-    <!-- <div class="form-check form-switch mx-4">
-        <button class="btn rounded-fill" onclick="myFunction()" ><i class="bi bi-moon-fill"></i></button>
-    </div> -->
-    <form method="post" action="">
-        <input type="text" name="city" class="enter" placeholder="Enter city" required>
-       <input type="submit" value="Get Weather" class="get_weather" formaction="./index.html" disabled>
 
-    </form>
+        <form method="post" action="javascript:void(0);">
+            <input type="text" name="city" class="enter" placeholder="Enter city" required>
+            <input type="submit" value="Get Weather" class="get_weather">
+        </form>
+    </div>
 
-
-</div>
-<div class="footer">
-    <p>&copy; 2023 Winter is Coming</p>
-</div>
-
-
+    <div class="footer">
+        <p>&copy; 2023 Winter is Coming</p>
+    </div>
 </body>
 
 </html>
