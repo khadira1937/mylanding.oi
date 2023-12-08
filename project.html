@@ -141,8 +141,15 @@ section {
     padding: 5px;
     cursor: pointer;
 }
+        .aa{
+            margine-left: 40%;
+            color:white;
+            padding:5px;
+        }
 
-
+        .enter{
+            hight:20px;
+        }
     </style>
 </head>
 
@@ -152,7 +159,7 @@ section {
     <div class="container">
         <nav  class="header">
             <img src="./Winter_is_Coming2.png" alt="winter_logo" srcset="">
-            <a href="{% url 'about' %}" class="aa"><b>About</b> </a>
+            <a href="#about" class="aa"><b>About</b> </a>
             <a href="#login.html"  class="aa "><b>Login</b> </a> 
             <button class="btn rounded-fill" onclick="myFunction()" ><i class="bi bi-moon-fill"></i></button>
         </nav>
@@ -161,7 +168,7 @@ section {
         <button class="btn rounded-fill" onclick="myFunction()" ><i class="bi bi-moon-fill"></i></button>
     </div> -->
     <form method="post" action="">
-        <input type="text" name="city" placeholder="Enter city" required>
+        <input type="text" name="city" class="enter" placeholder="Enter city" required>
        <input type="submit" value="Get Weather" class="get_weather" formaction="./index.html" disabled>
 
     </form>
