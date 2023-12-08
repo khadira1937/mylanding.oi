@@ -133,7 +133,7 @@
     
     <div class="container">
         <nav  class="header">
-            <img src="{% static '../static/Winter_is_Coming2.png' %}" alt="" srcset="">
+            <img src="./Winter_is_Coming2.png" alt="winter_logo" srcset="">
             <a href="{% url 'about' %}" class="aa"><b>About</b> </a>
             <a href="#login.html"  class="aa "><b>Login</b> </a> 
             <button class="btn rounded-fill" onclick="myFunction()" ><i class="bi bi-moon-fill"></i></button>
@@ -142,49 +142,13 @@
     <!-- <div class="form-check form-switch mx-4">
         <button class="btn rounded-fill" onclick="myFunction()" ><i class="bi bi-moon-fill"></i></button>
     </div> -->
-    <form method="post" action="{% url 'forecast' %}">
+    <form method="post" action="">
         {% csrf_token %}
         <input type="text" name="city" placeholder="Enter city" required>
-        <a href="./index.html"></a><input type="submit" value="Get Weather" class="get_weather"></a>
+        <a href="./index.html"><input type="submit" value="Get Weather" class="get_weather"></a>
     </form>
 
-    <div class="comparison-container">
-        {% if error_message %}
-        <p style="color: red; text-align: center;">{{ error_message }}</p>
-        {% endif %}
-        {% if weather_data %}
-        <div  class="city-container">
-            <h1 class="test-css" >{{ weather_data.city }}</h1>
-            <h2>Temperature: {{ weather_data.temperature }}°C</h2>
-            <p><b>Description: {{ weather_data.description }}</b></p>
-            <p><b>temperature_max: {{ weather_data.temperature_max }}</b></p>
-            <p><b>temperature_min: {{ weather_data.temperature_min }}</b></p>
-            <p><b>feelslike_weather: {{ weather_data.feelslike_weather }}</b></p>
-            <img src="http://openweathermap.org/img/w/{{ weather_data.icon }}.png" alt="{{ weather_data.description }}">
-        </div>
 
-        {% endif %}
-
-        {% if forecast_data %}
-        <h2  style="margin-left: 4%;" class="forecast_title">5-Day Forecast</h2>
-        <div>
-            <ul class="forecast-list">
-                {% for date, forecast in forecast_data.items %}
-                    <li class="forecast-item">
-                        <p><b>Date: {{ forecast.date }}</b></p>
-                        <p> <b>Time: {{ forecast.time }}</b></p>
-                        <p> <b>Temperature: {{ forecast.temperature }}°C </b></p>
-                        <p> <b>Description: {{ forecast.description }}</b></p>
-                        <p> <b>temperature_max: {{ forecast.temperature_max }}</b></p>
-                        <p> <b>temperature_min: {{ forecast.temperature_min }}</b></p>
-                        <p> <b>FeelsLike: {{ forecast.FeelsLike }}</b></p>
-                        <img src="http://openweathermap.org/img/w/{{ forecast.icon }}.png" alt="Weather icon">
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-    {% endif %}
-    </div>
 </div>
 <div class="footer">
     <p>&copy; 2023 Winter is Coming</p>
