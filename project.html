@@ -26,11 +26,19 @@
             width: 100%;
             display: flex;
             text-align: center;
-        }
-        body{
+        
+        body {
+            min-height: 100vh;
             margin: 0;
             background-color: #ebebeb;
+            margin-bottom: 5%; /* Set the margin to the height of the footer */
         }
+        
+        .container {
+            text-align: center;
+            margin-bottom: 5%; /* Set the margin to the height of the footer */
+        }
+
         .container .header a{
             text-align: right;
             padding: 30px;
@@ -143,9 +151,9 @@
         <button class="btn rounded-fill" onclick="myFunction()" ><i class="bi bi-moon-fill"></i></button>
     </div> -->
     <form method="post" action="">
-        {% csrf_token %}
         <input type="text" name="city" placeholder="Enter city" required>
-        <a href="./index.html"><input type="submit" value="Get Weather" class="get_weather"></a>
+        <input type="submit" value="Get Weather" class="get_weather" formaction="./index.html">
+
     </form>
 
 
