@@ -108,3 +108,16 @@
         .container{
             text-align: center;
         }
+        @media screen and (max-width: 768px) {
+        .container .header {
+            padding: 5px; /* Adjust padding for smaller screens */
+        }
+    
+        .container .header img {
+            max-width: 50px; /* Adjust logo size for smaller screens */
+        }
+    
+        .container .header .aa {
+            padding: 10px; /* Adjust padding for links on smaller screens */
+        }
+    }
