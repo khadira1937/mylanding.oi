@@ -145,7 +145,7 @@
     <form method="post" action="{% url 'forecast' %}">
         {% csrf_token %}
         <input type="text" name="city" placeholder="Enter city" required>
-        <input type="submit" value="Get Weather" class="get_weather">
+        <a href="./index.html"></a><input type="submit" value="Get Weather" class="get_weather">
     </form>
 
     <div class="comparison-container">
