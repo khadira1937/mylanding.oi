@@ -18,286 +18,130 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-.container .header {
-            background-color: #1f1f1f;
-            color: #ebebeb;
-            margin: 0px;
-            padding: 10px ;
-            box-sizing: border-box;
-            height: 60px;
-            width: 100%;
-            display: flex;
-            text-align: center;
-        
-        body {
-            min-height: 100vh;
-            margin: 0;
-            background-color: #ebebeb;
-            margin-bottom: 5%; /* Set the margin to the height of the footer */
-        }
-        
-        .container {
-            text-align: center;
-            margin-bottom: 5%; /* Set the margin to the height of the footer */
-        }
+:root {
+    --bg-color: #081b29;
+    --second-bg-color: #112e42;
+    --text-color: #ededed;
+    --main-color: #00abf0;
+}
 
-        .container .header a{
-            text-align: right;
-            padding: 30px;
-            border-bottom: 2px;
-        }
-        form {
-            text-align: center;
-            margin: 20px 0;
-        }
-        
-        input[type="text"] {
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        
-        .get_weather {
-            background-color: #4CAF50;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .forecast-container {
-            width: 100%;
-            text-align: center;
-            margin-top: 20px;
-        }
-        .forecast-list {
-            list-style: none;
-            padding: 0;
-            display: flex; /* Utilisation de flexbox pour aligner les éléments */
-            justify-content: space-around; /* Répartit les éléments avec un espace égal */
-            position: relative;
-            position: relative; /* Assurez-vous que la position est définie */
-            z-index: 10;
-            margin-bottom: 50px;
-            height: calc(100vh - 5%); /* Ajustez la hauteur en fonction de la hauteur du footer */
-            overflow-y: auto;
-        }
-        .forecast-item {
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin: 0 10px;
-            background-color: #fff; /* White background color for the forecast items */
-            text-align: center;
-            max-width: 200px; /* Set a maximum width for the forecast items */
-        }
-        .footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            border-top:2px solid grey;
-            height: 5%;
-            width: 100%;
-            background-color: #ebebeb; /* Adjust the background color */
-            color: black; /* Adjust the text color */
-            text-align: center;
-            padding: 10px;
-            position: relative; /* Assurez-vous que la position est définie */
-            z-index: 1;
-            
-        }
-        .container .header {
-            margin-left: auto;
-            display: flex;
-        }
-        .container .header .aa {
-            color: white;
-            text-decoration: none;
-            margin: 0px;
-            padding: 8px 16px; /* Add padding for the links */
-            border-radius: 5px; /* Rounded corners */
-            transition: background-color 0.3s ease; /* Smooth color transition */
-            justify-content: space-between;
-            position: relative; /* Assurez-vous que la position est définie */
-        }
-        .container .header .aa:hover {
-            background-color: #555; /* Darker background color on hover */
-        }
-        .container .header img{
-            padding-right: 1050px;
-            max-width: 100px; /* Set maximum width for the logo */
-            height: auto;
-            width: 100px;
-            height: 100px;
-        }
-        .container{
-            text-align: center;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
 
-        :root {
-            --bg-color: #081b29;
-            --second-bg-color: #112e42;
-            --text-color: #ededed;
-            --main-color: #00abf0;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            text-decoration: none;
-            border: none;
-            outline: none;
-            scroll-behavior: smooth;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        html {
-            font-size: 62.5%;
-            overflow-x: hidden;
-        }
-        
-        body {
-            background: var(--bg-color);
-            color: var(--text-color);
-        }
-        
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 2rem 9%;
-            background: transparent;
-            display: flex;
-            justify-content: space-between;
-            z-index: 100;
-        }
-        
-        .logo {
-            font-size: 2.5rem;
-            color: var(--text-color);
-            font-weight: 600;
-        }
-        
-        .navbar a {
-            font-size: 1.7rem;
-            color: var(--text-color);
-            font-weight: 500;
-            margin-left: 3.5rem;
-            transition: .3s;
-        }
-        
-        .navbar a:hover,
-        .navbar a.active {
-            color: var(--main-color);
-        }
-        
-        #menu-icon {
-            font-size: 3.6rem;
-            color: var(--text-color);
-            cursor: pointer;
-            display: none;
-        }
-        
-        /* ... Rest of your code ... */
-        
-        @media screen and (max-width: 768px) {
-            html {
-                font-size: 50%;
-            }
-        
-            body {
-                padding-top: 6rem;
-            }
-        
-            .header {
-                padding: 1rem 5%;
-            }
-        
-            .logo {
-                font-size: 2rem;
-            }
-        
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: var(--bg-color);
-                display: none;
-            }
-        
-            .navbar.active {
-                display: flex;
-            }
-        
-            .navbar a {
-                margin: 1rem 0;
-                font-size: 2rem;
-            }
-        
-            #menu-icon {
-                display: block;
-            }
-        
-            section {
-                padding: 6rem 5% 2rem;
-            }
-        
-            /* ... Additional styles for smaller screens ... */
-        }
-            /* Add the following styles to center the content and fix the footer */
-            body {
-                display: flex;
-                flex-direction: column;
-                min-height: 100vh;
-            }
-            
-            .container {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            .footer {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                border-top: 2px solid grey;
-                height: 5%;
-                width: 100%;
-                background-color: #ebebeb;
-                color: black;
-                text-align: center;
-                padding: 10px;
-                z-index: 1;
-            }
-            
-            /* Add the following styles to style the "Get Weather" button */
-            .get_weather {
-                background-color: #4CAF50;
-                color: white;
-                padding: 5px 10px;
-                border: none;
-                border-radius: 5px;
-                cursor: not-allowed; /* Disable the cursor */
-            }
-            
-            /* Add styles for the moon toggle button */
-            .btn.rounded-fill {
-                margin-left: auto;
-                background-color: #007bff; /* Blue background for the moon button */
-                color: white;
-                border: none;
-                border-radius: 50%;
-                padding: 5px;
-                cursor: pointer;
-            }
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background: var(--bg-color); /* Set the background color */
+    color: var(--text-color);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 9%;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.navbar a {
+    font-size: 1.7rem;
+    color: var(--text-color);
+    font-weight: 500;
+    margin-left: 3.5rem;
+    transition: .3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--main-color);
+}
+
+#menu-icon {
+    font-size: 3.6rem;
+    color: var(--text-color);
+    cursor: pointer;
+    display: none;
+}
+
+section {
+    min-height: 100vh;
+    padding: 10rem 9% 2rem;
+}
+
+.home-content h1 {
+    font-size: 5.6rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* ... Rest of your code ... */
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-top: 2px solid grey;
+    height: 5%;
+    width: 100%;
+    background-color: #ebebeb;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    z-index: 1;
+}
+
+.get_weather {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: not-allowed; /* Disable the cursor */
+}
+
+.btn.rounded-fill {
+    margin-left: auto;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+}
+
 
     </style>
 </head>
