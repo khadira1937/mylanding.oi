@@ -142,13 +142,22 @@ section {
     cursor: pointer;
 }
          .enter {
-            height: 50px; /* Increase the height */
-            border-radius: 15px; /* Add border radius */
+            height: 30px; /* Increase the height */
+            border-radius: 8px; /* Add border radius */
         }
 
         /* Updated CSS for the Get Weather button */
         .get_weather {
             cursor: default; /* Change the cursor */
+        }
+        .header img {
+            height: 50px; /* Reduce the size of the logo */
+            width: auto; /* Maintain the aspect ratio */
+        }
+
+        /* Updated CSS for the header */
+        .header {
+            justify-content: space-between; /* Distribute space evenly between the elements */
         }
     </style>
 </head>
@@ -158,8 +167,8 @@ section {
     
     <div class="container">
         <nav class="header">
-            <img src="./Winter_is_Coming2.png" alt="winter_logo" srcset="">
             <div style="display: flex; flex-direction: row;">
+                <img src="./Winter_is_Coming2.png" alt="winter_logo" srcset="">
                 <a href="#about" class="aa"><b>About</b></a>
                 <a href="#login.html" class="aa"><b>Login</b></a>
             </div>
