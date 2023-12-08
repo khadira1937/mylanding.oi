@@ -260,3 +260,89 @@ section{
 .forecast_title{
     text-align: center;
 }
+@media only screen and (max-width: 768px) {
+    html {
+        font-size: 50%; /* Adjust font size for smaller screens */
+    }
+
+    body {
+        padding-top: 6rem; /* Add space for the fixed header */
+    }
+
+    .header {
+        padding: 1rem 5%; /* Adjust padding for smaller screens */
+    }
+
+    .logo {
+        font-size: 2rem; /* Adjust logo font size */
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        top: 70px; /* Adjust the top position to avoid overlapping with the header */
+        left: 0;
+        width: 100%;
+        background: var(--bg-color);
+        display: none; /* Hide the navbar by default */
+    }
+
+    .navbar.active {
+        display: flex; /* Show the navbar when active class is applied */
+    }
+
+    .navbar a {
+        margin: 1rem 0;
+        font-size: 2rem; /* Adjust font size for navbar links */
+    }
+
+    #menu-icon {
+        display: block; /* Show the menu icon for smaller screens */
+    }
+
+    section {
+        padding: 6rem 5% 2rem; /* Adjust padding for smaller screens */
+    }
+
+    .home-content h1 {
+        font-size: 4.5rem; /* Adjust font size for heading */
+    }
+
+    .home-content .text-animate {
+        width: 100%; /* Adjust width for text animation */
+    }
+
+    .home-content .text-animate h3 {
+        font-size: 2.5rem; /* Adjust font size for h3 in text animation */
+    }
+
+    .home-content p {
+        font-size: 1.4rem; /* Adjust font size for paragraph */
+    }
+
+    .btn-box {
+        flex-direction: column;
+        width: 100%; /* Adjust width for button box */
+    }
+
+    .btn-box .btn {
+        width: 100%; /* Adjust width for buttons */
+        margin-bottom: 1rem;
+    }
+
+    .home-sci {
+        bottom: 2rem; /* Adjust bottom position for social icons */
+    }
+
+    .home-sci a {
+        width: 30px; /* Adjust width for social icons */
+        height: 30px; /* Adjust height for social icons */
+        font-size: 14px; /* Adjust font size for social icons */
+    }
+
+    .home-imgHover {
+        width: 100%; /* Adjust width for image hover */
+        height: 30vh; /* Adjust height for image hover */
+    }
+}
