@@ -1,3 +1,110 @@
 .container .header{
     background-color: #1f1f1f;
 }
+ .container .header {
+            background-color: #1f1f1f;
+            color: #ebebeb;
+            margin: 0px;
+            padding: 10px ;
+            box-sizing: border-box;
+            height: 60px;
+            width: 100%;
+            display: flex;
+            text-align: center;
+        }
+        body{
+            margin: 0;
+            background-color: #ebebeb;
+        }
+        .container .header a{
+            text-align: right;
+            padding: 30px;
+            border-bottom: 2px;
+        }
+        form {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        input[type="text"] {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .get_weather {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .forecast-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .forecast-list {
+            list-style: none;
+            padding: 0;
+            display: flex; /* Utilisation de flexbox pour aligner les éléments */
+            justify-content: space-around; /* Répartit les éléments avec un espace égal */
+            position: relative;
+            position: relative; /* Assurez-vous que la position est définie */
+            z-index: 10;
+            margin-bottom: 50px;
+            height: calc(100vh - 5%); /* Ajustez la hauteur en fonction de la hauteur du footer */
+            overflow-y: auto;
+        }
+        .forecast-item {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 0 10px;
+            background-color: #fff; /* White background color for the forecast items */
+            text-align: center;
+            max-width: 200px; /* Set a maximum width for the forecast items */
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            border-top:2px solid grey;
+            height: 5%;
+            width: 100%;
+            background-color: #ebebeb; /* Adjust the background color */
+            color: black; /* Adjust the text color */
+            text-align: center;
+            padding: 10px;
+            position: relative; /* Assurez-vous que la position est définie */
+            z-index: 1;
+            
+        }
+        .container .header {
+            margin-left: auto;
+            display: flex;
+        }
+        .container .header .aa {
+            color: white;
+            text-decoration: none;
+            margin: 0px;
+            padding: 8px 16px; /* Add padding for the links */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s ease; /* Smooth color transition */
+            justify-content: space-between;
+            position: relative; /* Assurez-vous que la position est définie */
+        }
+        .container .header .aa:hover {
+            background-color: #555; /* Darker background color on hover */
+        }
+        .container .header img{
+            padding-right: 1050px;
+            max-width: 100px; /* Set maximum width for the logo */
+            height: auto;
+            width: 100px;
+            height: 100px;
+        }
+        .container{
+            text-align: center;
+        }
