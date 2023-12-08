@@ -1,0 +1,492 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/style1.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .about{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 2rem;
+            background: var(--second-bg-color);
+            padding-bottom: 6rem;
+        }
+        .heading{
+            font-size: 5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        span{
+            color: var(--main-color);
+        }
+        
+        .about-img{
+            position: relative;
+            width: 25rem;
+            height: 25rem;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .about-img img{
+            width: 90%;
+            border-radius: 50%;
+            border: .2rem solid var(--main-color);
+        } 
+        .about-img a{
+            width: 90%;
+            border-radius: 50%;
+            border: .2rem solid var(--main-color);
+        }
+        /*.home {
+            display: flex;
+            align-items: center;
+            padding: 0 9% ;
+            background: url('../../static/zab-removebg-preview.png')no-repeat;
+            background-size: cover;
+            background-position: center; 
+        }*/
+
+        .about-img .circle-spin{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(0);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border-top: .2rem solid var(--second-bg-color);
+            border-bottom: .2rem solid var(--second-bg-color);
+            border-left: .2rem solid var(--main-color);
+            border-right: .2rem solid var(--main-color);
+        }
+
+        .about-content{
+            text-align: center;
+        }
+        .about-content h3{
+            font-size: 2.6rem;
+        }
+        .about-content p {
+            font-size: 1.6rem;
+            margin: 2rem 0 3rem;
+        }
+        .btn-box.btns{
+            display: inline-block;
+            width: 15rem;
+        }
+        .btn-box.btns a::before{
+            background: var(--second-bg-color);
+        }
+        
+        .education{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: auto;
+            padding-bottom: 5rem;
+        }
+        .education .education-row{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5rem;
+        }
+        .education-row .education-column{
+            flex: 1 1 40rem;
+        }
+        .education-column .title{
+            font-size: 2.5rem;
+            margin:  0 0 1.5rem 2rem;
+        }
+        .education-column .education-box{
+            border-left: .2rem solid var(--main-color);
+        }
+        .education-box .education-content{
+            position: relative;
+            padding-left: 2rem;
+        }
+        .education-box .education-content::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -1.1rem;
+            width: 2rem;
+            height: 2rem;
+            background: var(--main-color);
+            border-radius: 50%;
+        }
+        .education-content .content{
+            position: relative;
+            padding: 1.5rem;
+            border: .2rem solid var(--main-color);
+            border-radius: .6rem;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        .education-content .content::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--second-bg-color);
+            z-index: -1;
+            transition: .5s;
+        }
+        .education-content .content:hover::before{
+            width: 100%;
+        }
+
+        .education-content .content .year{
+            font-size: 1.5rem;
+            color: var(--main-color);
+            padding-bottom: .5rem;
+        }
+        .education-content .content .year i{
+            padding-right: .5rem;
+        }
+        .education-content .content h3{
+            font-size: 2rem;
+        }
+        .education-content .content p{
+            font-size: 1.6rem;
+            padding-top: .5rem;
+        }
+        .container .header a{
+            text-align: right;
+            padding: 30px;
+            border-bottom: 2px;
+        }
+        form {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        input[type="text"] {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .get_weather {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .forecast-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .forecast-list {
+            list-style: none;
+            padding: 0;
+            display: flex; /* Utilisation de flexbox pour aligner les éléments */
+            justify-content: space-around; /* Répartit les éléments avec un espace égal */
+            position: relative;
+            position: relative; /* Assurez-vous que la position est définie */
+            z-index: 10;
+            margin-bottom: 50px;
+            height: calc(100vh - 5%); /* Ajustez la hauteur en fonction de la hauteur du footer */
+            overflow-y: auto;
+        }
+        .forecast-item {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 0 10px;
+            background-color: var(--second-bg-color); /* White background color for the forecast items */
+            text-align: center;
+            max-width: 200px; /* Set a maximum width for the forecast items */
+        }
+        .city-container{
+            justify-content: center;
+        }
+        .home {
+            display: flex;
+            align-items: center;
+            padding: 0 9% ;
+            background-size: cover;
+            background-position: center; 
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo" >Portfolio.</a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- home section design-->
+    <section class="home" id="home">
+        <div class="about-img">
+            <img src="../../static/My_image.png" alt="">
+            <span class="circle-spin"></span>
+        </div>
+        <div class="home-content">
+            <h1>Hi, I'm <span>Rahmani Mohamed Reda</span></h1>
+            <div class="text-animate">
+                <h3>Backend Developer</h3>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam minus corrupti quis libero quod incidunt sequi maiores, dolores impedit nesciunt ad accusantium numquam excepturi assumenda velit quidem debitis aut! Tenetur.</p>
+            <div class="btn-box">
+                <a href="#" class="btn">Hire Me</a>
+                <a href="#" class="btn">Let's Talk</a>
+            </div>
+        </div>
+
+        <div class="home-sci">
+            <a href="#"><i class="bx bxl-facebook"></i></a>
+            <a href="#"><i class="bx bxl-twitter"></i></a>
+            <a href="#"><i class="bx bxl-linkedin"></i></a>
+        </div>
+
+        <div class="home-imgHover"></div>
+    </section>
+    <!-- home section design-->
+    <section class="home" id="home">
+        <div class="about-img">
+            <img src="../../static/Khadira.png" alt="">
+            <span class="circle-spin"></span>
+        </div>
+        <div class="home-content">
+            <h1>Hi, I'm <span>Khadira Oussama</span></h1>
+            <div class="text-animate">
+                <h3>Backend Developer</h3>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam minus corrupti quis libero quod incidunt sequi maiores, dolores impedit nesciunt ad accusantium numquam excepturi assumenda velit quidem debitis aut! Tenetur.</p>
+            <div class="btn-box">
+                <a href="#" class="btn">Hire Me</a>
+                <a href="#" class="btn">Let's Talk</a>
+            </div>
+        </div>
+
+        <div class="home-sci">
+            <a href="#"><i class="bx bxl-facebook"></i></a>
+            <a href="#"><i class="bx bxl-twitter"></i></a>
+            <a href="#"><i class="bx bxl-linkedin"></i></a>
+        </div>
+
+        <div class="home-imgHover"></div>
+    </section>
+    <section class="about" id="about">
+        <h2 class="heading">About<span>Reda</span></h2>
+        <div class="about-img">
+            <img src="../../static/My_image.png" alt="">
+            <span class="circle-spin"></span>
+        </div>
+        <div class="about-content">
+            <h3>Backend Developer!</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores beatae temporibus tempora officiis mollitia natus eum voluptates suscipit perspiciatis corrupti rem molestiae nostrum, reiciendis repellat eius possimus dolore accusamus quas.</p>
+            <div class="btn-box btns">
+                <a href="" class="btn">Download CV</a>
+            </div>
+        </div>
+    </section>
+    <section class="about" id="about">
+        <h2 class="heading">About<span>Oussama</span></h2>
+        <div class="about-img">
+            <img src="../../static/Khadira.png" alt="">
+            <span class="circle-spin"></span>
+        </div>
+        <div class="about-content">
+            <h3>Backend Developer!</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores beatae temporibus tempora officiis mollitia natus eum voluptates suscipit perspiciatis corrupti rem molestiae nostrum, reiciendis repellat eius possimus dolore accusamus quas.</p>
+            <div class="btn-box btns">
+                <a href="" class="btn">Download CV</a>
+            </div>
+        </div>
+    </section>
+    <section class="education" id="education">
+        <h2 class="heading">Reda<span>Journey</span></h2>
+        <div class="education-row">
+            <div class="education-column">
+                <h3 class="title">Education</h3>
+                <div class="education-box">
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class="bx bxs-calendar"></i>2017-2018</div>
+                            <h3>Master Degree - University</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, minima asperiores! Modi quae suscipit hic magni voluptatum sunt quia, obcaecati accusantium nesciunt facere reprehenderit dolore accusamus fugit officiis natus non?</p>
+                        </div>
+                    </div>
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class="bx bxs-calendar"></i>2017-2018</div>
+                            <h3>Master Degree - University</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, minima asperiores! Modi quae suscipit hic magni voluptatum sunt quia, obcaecati accusantium nesciunt facere reprehenderit dolore accusamus fugit officiis natus non?</p>
+                        </div>
+                    </div>
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class="bx bxs-calendar"></i>2017-2018</div>
+                            <h3>Master Degree - University</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, minima asperiores! Modi quae suscipit hic magni voluptatum sunt quia, obcaecati accusantium nesciunt facere reprehenderit dolore accusamus fugit officiis natus non?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="education-column">
+                <h3 class="title">Experience</h3>
+                <div class="education-box">
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class="bx bxs-calendar"></i>2017-2018</div>
+                            <h3>Master Degree - University</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, minima asperiores! Modi quae suscipit hic magni voluptatum sunt quia, obcaecati accusantium nesciunt facere reprehenderit dolore accusamus fugit officiis natus non?</p>
+                        </div>
+                    </div>
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class="bx bxs-calendar"></i>2017-2018</div>
+                            <h3>Master Degree - University</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, minima asperiores! Modi quae suscipit hic magni voluptatum sunt quia, obcaecati accusantium nesciunt facere reprehenderit dolore accusamus fugit officiis natus non?</p>
+                        </div>
+                    </div>
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class="bx bxs-calendar"></i>2017-2018</div>
+                            <h3>Master Degree - University</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, minima asperiores! Modi quae suscipit hic magni voluptatum sunt quia, obcaecati accusantium nesciunt facere reprehenderit dolore accusamus fugit officiis natus non?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="education" id="education">
+        <h2 class="heading">Oussama<span>Journey</span></h2>
+        <div class="education-row">
+            <div class="education-column">
+                <h3 class="title">Education</h3>
+                <div class="education-box">
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class="bx bxs-calendar"></i>2017-2018</div>
+                            <h3>Master Degree - University</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, minima asperiores! Modi quae suscipit hic magni voluptatum sunt quia, obcaecati accusantium nesciunt facere reprehenderit dolore accusamus fugit officiis natus non?</p>
+                        </div>
+                    </div>
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class="bx bxs-calendar"></i>2017-2018</div>
+                            <h3>Master Degree - University</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, minima asperiores! Modi quae suscipit hic magni voluptatum sunt quia, obcaecati accusantium nesciunt facere reprehenderit dolore accusamus fugit officiis natus non?</p>
+                        </div>
+                    </div>
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class="bx bxs-calendar"></i>2017-2018</div>
+                            <h3>Master Degree - University</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, minima asperiores! Modi quae suscipit hic magni voluptatum sunt quia, obcaecati accusantium nesciunt facere reprehenderit dolore accusamus fugit officiis natus non?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="education-column">
+                <h3 class="title">Experience</h3>
+                <div class="education-box">
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class="bx bxs-calendar"></i>2017-2018</div>
+                            <h3>Master Degree - University</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, minima asperiores! Modi quae suscipit hic magni voluptatum sunt quia, obcaecati accusantium nesciunt facere reprehenderit dolore accusamus fugit officiis natus non?</p>
+                        </div>
+                    </div>
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class="bx bxs-calendar"></i>2017-2018</div>
+                            <h3>Master Degree - University</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, minima asperiores! Modi quae suscipit hic magni voluptatum sunt quia, obcaecati accusantium nesciunt facere reprehenderit dolore accusamus fugit officiis natus non?</p>
+                        </div>
+                    </div>
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class="bx bxs-calendar"></i>2017-2018</div>
+                            <h3>Master Degree - University</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, minima asperiores! Modi quae suscipit hic magni voluptatum sunt quia, obcaecati accusantium nesciunt facere reprehenderit dolore accusamus fugit officiis natus non?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="services" id="services">
+        <a href="#services1"><img src="../../static/jolly-removebg-preview.png"></a>
+    </section>
+    <section class="services1" id="services1">
+        <div class="container">
+        <!-- <div class="form-check form-switch mx-4">
+            <button class="btn rounded-fill" onclick="myFunction()" ><i class="bi bi-moon-fill"></i></button>
+        </div> -->
+        <form method="post" action="{% url 'forecast' %}">
+            {% csrf_token %}
+            <input type="text" name="city" placeholder="Enter city" required>
+            <input type="submit" value="Get Weather" class="get_weather">
+        </form>
+    
+        <div class="comparison-container">
+            {% if error_message %}
+            <p style="color: red; text-align: center;">{{ error_message }}</p>
+            {% endif %}
+            {% if weather_data %}
+            <div class="city-container">
+                <h1 >{{ weather_data.city }}</h1>
+                <h2>Temperature: {{ weather_data.temperature }}°C</h2>
+                <p><b>Description: {{ weather_data.description }}</b></p>
+                <p><b>temperature_max: {{ weather_data.temperature_max }}</b></p>
+                <p><b>temperature_min: {{ weather_data.temperature_min }}</b></p>
+                <p><b>feelslike_weather: {{ weather_data.feelslike_weather }}</b></p>
+                <img src="http://openweathermap.org/img/w/{{ weather_data.icon }}.png" alt="{{ weather_data.description }}">
+            </div>
+    
+            {% endif %}
+    
+            {% if forecast_data %}
+            <h2 class="forecast_title">5-Day Forecast</h2>
+            <div>
+                <ul class="forecast-list">
+                    {% for date, forecast in forecast_data.items %}
+                        <li class="forecast-item">
+                            <p><b>Date: {{ forecast.date }}</b></p>
+                            <p> <b>Time: {{ forecast.time }}</b></p>
+                            <p> <b>Temperature: {{ forecast.temperature }}°C </b></p>
+                            <p> <b>Description: {{ forecast.description }}</b></p>
+                            <p> <b>temperature_max: {{ forecast.temperature_max }}</b></p>
+                            <p> <b>temperature_min: {{ forecast.temperature_min }}</b></p>
+                            <p> <b>FeelsLike: {{ forecast.FeelsLike }}</b></p>
+                            <img src="http://openweathermap.org/img/w/{{ forecast.icon }}.png" alt="Weather icon">
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+    </section>
+</body>
+</html>
