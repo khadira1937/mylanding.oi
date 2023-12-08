@@ -231,4 +231,53 @@
         
             /* ... Additional styles for smaller screens ... */
         }
+            /* Add the following styles to center the content and fix the footer */
+            body {
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+            
+            .container {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .footer {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                border-top: 2px solid grey;
+                height: 5%;
+                width: 100%;
+                background-color: #ebebeb;
+                color: black;
+                text-align: center;
+                padding: 10px;
+                z-index: 1;
+            }
+            
+            /* Add the following styles to style the "Get Weather" button */
+            .get_weather {
+                background-color: #4CAF50;
+                color: white;
+                padding: 5px 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: not-allowed; /* Disable the cursor */
+            }
+            
+            /* Add styles for the moon toggle button */
+            .btn.rounded-fill {
+                margin-left: auto;
+                background-color: #007bff; /* Blue background for the moon button */
+                color: white;
+                border: none;
+                border-radius: 50%;
+                padding: 5px;
+                cursor: pointer;
+            }
 
